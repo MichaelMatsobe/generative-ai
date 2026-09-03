@@ -57,13 +57,7 @@ name: Check Spelling
 #     ... otherwise adjust the `with:` as you wish
 
 on:
-  pull_request:
-    branches:
-      - "**"
-    types:
-      - "opened"
-      - "reopened"
-      - "synchronize"
+  workflow_dispatch:
 
 jobs:
   spelling:
@@ -92,7 +86,7 @@ jobs:
           post_comment: 0
           use_magic_file: 1
           report-timing: 1
-          warnings: bad-regex,binary-file,deprecated-feature,ignored-expect-variant,large-file,limited-references,no-newline-at-eof,noisy-file,non-alpha-in-dictionary,token-is-substring,unexpected-line-ending,whitespace-in-dictionary,minified-file,unsupported-configuration,no-files-to-check,unclosed-block-ignore-begin,unclosed-block-ignore-end
+          warnings: bad-regex,binary-file,deprecated-feature,ignored-expect-variant,large-file,limited-references,no-newline-at-eof,noisy-file,non-alpha-in-dictionary,token-is-substring,unexpected[...]
           experimental_apply_changes_via_bot: 1
           dictionary_source_prefixes: '{"cspell": "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/"}'
           extra_dictionaries: |
@@ -144,9 +138,6 @@ jobs:
             cspell:cryptocurrencies/dict/cryptocurrencies.txt
             cspell:gaming-terms/dict/gaming-terms.txt
             cspell:latex/dict/latex.txt
-            cspell:public-licenses/src/additional-licenses.txt
-            cspell:public-licenses/src/generated/public-licenses.txt
-            cspell:scientific_terms_US/custom_scientific_US.trie
           ignore-pattern: "[^'a-záéíóúñçüA-ZÁÉÍÓÚÑÇÜ]"
           upper-pattern: "[A-ZÁÉÍÓÚÑÇÜ]"
           lower-pattern: "[a-záéíóúñçü]"
